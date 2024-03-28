@@ -4,8 +4,8 @@
 <h3> Here are a few sccreenshots from the program :</h3>
 <ul>
   <li> Order page = </li>
-  ![image](https://github.com/codingsanji/Cafe/assets/165115144/9e76e295-909e-480f-bada-bc584248ef29)
-  <li> Menu = </li>
-  ![image](https://github.com/codingsanji/Cafe/assets/165115144/1a238b7f-8590-48d4-af91-0f8924415aab)
+  <br>
+  <img src="https://github.com/codingsanji/Cafe/assets/165115144/9e76e295-909e-480f-bada-bc584248ef29">
+  <br>
 </ul>
 
