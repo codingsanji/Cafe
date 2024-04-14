@@ -417,6 +417,76 @@ lblTotal.grid(row=6,column=1)
 txtTotal = Entry(ftotal,font=('ariel' ,16,'bold'),textvariable=Total , bd=6,insertwidth=4,width=12,bg="#f5e1fd" ,justify='right')
 txtTotal.grid(row=6,column=2)
 
+
+#----------------------------MENU-------------------------------------
+def create_frame(root, width, height, side, relx, rely, offset=0):
+    frame = Frame(root, width=width, height=height, bd=8, relief='raise', bg='#FCDD9E')
+    frame.pack(side=side)
+    frame.place(relx=relx, rely=rely+offset)
+    return frame
+
+def create_label(frame, text, row, column, font=('aria', 18, 'bold'), fg="black", bg='#FCDD9E', anchor='w'):
+    label = Label(frame, text=text, font=font, fg=fg, bg=bg, anchor=anchor)
+    label.grid(row=row, column=column)
+    return label
+
+def menu():
+    rootm = Tk()
+    rootm.state('zoomed')
+    rootm.title("Menu")
+    rootm.configure(bg='brown')
+
+
+    f_menu_heading = create_frame(rootm, 600, 80, 'top', 0.45, 0.0, offset=0.05)
+    lbl_menu_heading = Label(f_menu_heading, text="MENU", font=('aria', 40, 'bold'), fg='black')
+    lbl_menu_heading.pack(side=TOP, pady=10)  
+
+    ftop1 = create_frame(rootm, 220, 50, 'top', 0.085, 0.1, offset=0.15)
+    ftop2 = create_frame(rootm, 220, 50, 'top', 0.315, 0.1, offset=0.15)
+    ftop3 = create_frame(rootm, 220, 50, 'top', 0.6, 0.1, offset=0.15)
+    f1m = create_frame(rootm, 350, 350, 'left', 0.03, 0.37)
+    f2m = create_frame(rootm, 350, 350, 'right', 0.3, 0.37)
+    f3m = create_frame(rootm, 350, 350, 'right', 0.599, 0.37)
+    f4m = create_frame(rootm, 350, 350, 'right', 0.75, 0.37)
+
+    create_label(ftop1, "COFFEE", 0, 0, font=('aria', 22, 'bold', 'underline'))
+    create_label(ftop2, "BAKED GOODS", 0, 0, font=('aria', 22, 'bold', 'underline'))
+    create_label(ftop3, "ICE CREAM", 0, 0, font=('aria', 22, 'bold', 'underline'))
+
+    coffee_menu = [
+        ("Expresso", "2.80$"), ("Double Expresso", "5.60$"), ("Expresso Machiato", "5.00$"),
+        ("White Café Glacé", "7.20$"), ("Mocha", "8.90$"), ("Cinnamon Latte", "4.25$"),
+        ("Americano", "3.20$"), ("Latte", "4.35$"), ("Cappuccino", "5.50$")
+    ]
+    for i, (item, price) in enumerate(coffee_menu, start=1):
+        create_label(f1m, item, i, 0)
+        create_label(f1m, price, i, 2)
+
+    baked_goods_menu = [
+        ("Croissant", "3.00$"), ("Cupcake", "2.40$"), ("Cheese sandwich", "4.00$"),
+        ("Cinnamon Roll", "4.00$"), ("Cheesecake", "2.90$"), ("Cheese Danish", "2.45$"),
+        ("Chocolate Cake", "3.00$"), ("Blueberry Scone", "2.50$")
+    ]
+    for i, (item, price) in enumerate(baked_goods_menu, start=1):
+        create_label(f2m, item, i, 3)
+        create_label(f2m, price, i, 4)
+
+    ice_cream_flavors = [
+        "Vanilla", "Chocolate", "Cookie Dough", "Butterscotch", "Mint Chocolate",
+        "Pistachio", "Mango Tango", "Strawberry"
+    ]
+    create_label(f3m, "FLAVOURS:", 1, 6, font=('aria', 18, 'bold', 'underline'))
+    for i, flavor in enumerate(ice_cream_flavors, start=2):
+        create_label(f3m, flavor, i, 6)
+
+    ice_cream_prices = [("Small Scoop", "2.00$"), ("Regular Scoop", "3.40$"), ("Double Scoop", "5.00$")]
+    for i, (item, price) in enumerate(ice_cream_prices, start=9):
+        create_label(f4m, item, i, 6)
+        create_label(f4m, price, i, 7)
+
+    rootm.mainloop()
+
+
 #-----------------------------------------buttons------------------------------------------
 
 btnTotal=Button(fbutton,padx=16,pady=8, bd=10 ,fg="black",font=('ariel' ,16,'bold'),width=10, text="TOTAL", bg="#03c04a",command=Ref)
@@ -428,154 +498,8 @@ btnreset.grid(row=12, column=2)
 btnexit=Button(fbutton,padx=16,pady=8, bd=10 ,fg="black",font=('ariel' ,16,'bold'),width=10, text="EXIT", bg="#d21404",command=qexit)
 btnexit.grid(row=12, column=3)
 
-#----------------------------MENU-------------------------------------
-def menu():
-    rootm= Tk()
-    rootm.state('zoomed')
-    rootm.title("Menu")
-
-    ftop1=Frame(rootm,width =220,height=50,bd=8,relief='raise')
-    ftop1.pack(side=TOP)
-    ftop1.place(relx=0.07,rely=0.0)
-
-    ftop2=Frame(rootm,width =220,height=50,bd=8,relief='raise')
-    ftop2.pack(side=TOP)
-    ftop2.place(relx=0.332,rely=0.0)
-
-    ftop3=Frame(rootm,width=220,height=50,bd=8,relief='raise')
-    ftop3.pack(side=TOP)
-    ftop3.place(relx=0.63,rely=0.0)
-
-    f1m=Frame(rootm,width =350,height=350,bd=8,relief='raise',bg='#FCDD9E')
-    f1m.pack(side=LEFT)
-    f1m.place(relx=.0,rely=.09)
-
-    f2m= Frame(rootm,width =350,height=350,bd=8,relief='raise',bg='#FCDD9E')
-    f2m.pack(side=RIGHT)
-    f2m.place(relx=.30,rely=.09)
-
-    f3m=Frame(rootm,width =350,height=350,bd=8,relief='raise',bg='#FCDD9E')
-    f3m.pack(side=RIGHT)
-    f3m.place(relx=.62,rely=0.09)
-
-    f4m=Frame(rootm,width=350,height=350,bd=8,relief='raise',bg='#FCDD9E')
-    f4m.pack(side=BOTTOM)
-    f4m.place(relx=0.6,rely=0.65)
-
-    lblinfo = Label(ftop1, font=('aria ', 22, 'bold','underline'), text="COFFEE", fg="black", bd=3,relief='ridge',justify='center')
-    lblinfo.grid(row=0, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="Expresso", fg="black", bg='#FCDD9E',anchor=W)
-    lblinfo.grid(row=1, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="2.80$", fg="black", bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=1, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="Double Expresso", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=2, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="5.60$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=2, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="Expresso Machiato", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=3, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="5.00$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=3, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="White Café Glacé", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=4, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="7.20$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=4, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="Mocha", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=5, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="8.90$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=5, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="Cinnamon Latte", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=6, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="4.25$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=6, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="Americano", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=7, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="3.20$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=7, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="Latte", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=8, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="4.35$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=8, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="Cappuccino", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=9, column=0)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="5.50$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=9, column=2)
-    lblinfo = Label(f1m, font=('aria', 18, 'bold'), text="         ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=1, column=1)
-    lblinfo=Label(ftop2, font=('aria ', 22, 'bold','underline'), text="BAKED GOODS", fg="black", bd=3,relief='ridge',justify='center')
-    lblinfo.grid(row=0, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="Croissant          ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=1, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="3.00$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=1, column=4)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="Cupcake          ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=2, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="2.40$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=2, column=4)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="Cheese sandwich          ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=3, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="4.00$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=3, column=4)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="Cinnamon Roll          ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=4, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="4.00$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=4, column=4)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="Cheesecake          ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=5, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="2.90$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=5, column=4)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="Cheese Danish          ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=6, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="2.45$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=6, column=4)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="Chocolate Cake          ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=7, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="3.00$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=7, column=4)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="Blueberry Scone          ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=8, column=3)
-    lblinfo = Label(f2m, font=('aria', 18, 'bold'), text="2.50$", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=8, column=4)
-    lblinfo=Label(ftop3, font=('aria ', 22, 'bold','underline'), text="ICE CREAM",fg="black", bd=3,relief='ridge',justify='center')
-    lblinfo.grid(row=0, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold','underline'), text="FLAVOURS:", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=1, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold'), text="Vanilla", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=2, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold'), text="Chocolate", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=3, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold'), text="Cookie Dough", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=4, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold'), text="Butterscotch", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=5, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold'), text="Mint Chocolate", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=6, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold'), text="Pistachio", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=7, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold'), text="Mango Tango", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=8, column=6)
-    lblinfo = Label(f3m, font=('aria', 18, 'bold'), text="Strawberry", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=9, column=6)
-    lblinfo = Label(f4m, font=('aria', 18, 'bold'), text="Small Scoop     ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=9, column=6)
-    lblinfo = Label(f4m, font=('aria', 18, 'bold'), text="2.00 $", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=9, column=7)
-    lblinfo = Label(f4m, font=('aria', 18, 'bold'), text="Regular Scoop     ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=10, column=6)
-    lblinfo = Label(f4m, font=('aria', 18, 'bold'), text="3.40 $", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=10, column=7)
-    lblinfo = Label(f4m, font=('aria', 18, 'bold'), text="Double Scoop     ", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=11, column=6)
-    lblinfo = Label(f4m, font=('aria', 18, 'bold'), text="5.00 $", fg="black",bg='#FCDD9E', anchor=W)
-    lblinfo.grid(row=11, column=7)
-
-
-
-    
-    rootm.mainloop()
-
 btnmenu=Button(fbutton,padx=16,pady=8, bd=10 ,fg="black",font=('ariel' ,16,'bold'),width=10, text="MENU", bg="#b47ede",command=menu)
 btnmenu.grid(row=12, column=0)
 
-
 root.mainloop()
+
