@@ -8,5 +8,9 @@
   <br>
   <img src="https://github.com/codingsanji/Cafe/assets/165115144/9e76e295-909e-480f-bada-bc584248ef29">
   <br>
+  <li> Menu page = </li>
+  <br>
+  <img src="https://github.com/codingsanji/Cafe/assets/165115144/b07dea74-07f3-4173-9fe7-2cd0c38e45f2">
+  <br>
 </ul>
 
